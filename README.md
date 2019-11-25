@@ -36,19 +36,22 @@ Then we need to calculate the mapped position using the transforming matrix. For
 
 After getting the position from the Kinect's perspective, I calculate the cross product of `homographyMat` and source point position matrix, then get the destination position. The calculation of $src(S_{x}, S_{y})$ to $dst(D_{x}, D_{y})$ is shown as the following:
 
-$src = (S_{x}, S_{y});$
+<img src="https://latex.codecogs.com/gif.latex?src = (S_{x}, S_{y});$" />
 
-$holographyMat = \begin{bmatrix} 
+<img src="https://latex.codecogs.com/gif.latex?
+holographyMat = \begin{bmatrix} 
 M_{11} & M_{12} & M_{13} \\
 M_{21} & M_{22} & M_{23} \\
 M_{31} & M_{32} & M_{33} \\
-\end{bmatrix};$
+\end{bmatrix};" />
 
-$tempMat = holographyMat \cdot 
+<img src="https://latex.codecogs.com/gif.latex?
+tempMat = holographyMat \cdot 
 \begin{bmatrix}S_{x}\\S_{y}\\1\end{bmatrix} 
-= \begin{bmatrix}t_{1}\\t_{2}\\t_{3}\end{bmatrix};$
+= \begin{bmatrix}t_{1}\\t_{2}\\t_{3}\end{bmatrix};" />
 
-$dst = (\frac{t_{1}}{t_{3}}, \frac{t_{2}}{t_{3}}) = (D_{x}, D_{y});$
+<img src="https://latex.codecogs.com/gif.latex?
+dst = (\frac{t_{1}}{t_{3}}, \frac{t_{2}}{t_{3}}) = (D_{x}, D_{y});" />
 
 ### Physical Computing
 After getting the position of people, we calculate the index of grid where the position belongs to. Since I only use 84 LEDs (12*7), whose amount is lower than 256, I can just send the index in the format of `byte` to the Arduino. 
